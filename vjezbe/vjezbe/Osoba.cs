@@ -39,5 +39,10 @@ namespace vjezbe
             foreach (Osoba o in lo)
                 o.IspisiDetalje();
         }
+
+        public virtual void Ispisi()
+        {
+            Console.WriteLine("Ime: {0}, Prezime: {1}", Ime, Prezime)
+        }
     }
 }
