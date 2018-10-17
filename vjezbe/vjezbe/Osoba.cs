@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace vjezbe
 {
-    public class Osoba
+    abstract public class Osoba
     {
         public string Ime;
         public string Prezime;
@@ -40,9 +40,6 @@ namespace vjezbe
                 o.IspisiDetalje();
         }
 
-        public virtual void Ispisi()
-        {
-            Console.WriteLine("Ime: {0}, Prezime: {1}", Ime, Prezime);
-        }
+        abstract public void Ispisi();
     }
 }

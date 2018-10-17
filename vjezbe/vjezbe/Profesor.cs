@@ -10,8 +10,8 @@ namespace vjezbe
     {
         public override void Ispisi()
         {
-            Console.Write("prof. ");
-            base.Ispisi();
+            Console.WriteLine("prof. {0} {1}", Ime, Prezime);
+            
         }
     }
 }

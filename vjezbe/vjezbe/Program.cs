@@ -10,11 +10,9 @@ namespace vjezbe
     {
         static void Main(string[] args)
         {
-            vjezbe1();
-
+            //vjezbe1();
             vjezbe2();
-
-            vjezbe3();
+            //vjezbe3();
         }
 
         static void vjezbe3()
@@ -39,11 +37,11 @@ namespace vjezbe
 
         static void vjezbe2()
         {
-            Osoba o = new Osoba();
+            Osoba o = new Student();
             o.Ime = "Marko";
             o.Prezime = "Markovic";
-            Osoba o1 = new Osoba() { Ime = "jkjk", Prezime = "ii" };
-            Osoba o2 = new Osoba("111", "222");
+            Osoba o1 = new Profesor() { Ime = "jkjk", Prezime = "ii" };
+            Osoba o2 = new Student("111", "222", "eofokepof");
             //o1.IspisiDetalje();
             Osoba.IspisiSveOsobe();
 

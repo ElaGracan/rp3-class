@@ -19,8 +19,8 @@ namespace vjezbe
 
         public override void Ispisi()
         {
-            base.Ispisi();
-            Console.WriteLine("{0}", JMBAG);
+            
+            Console.WriteLine("{0} {1} {2}",Ime, Prezime, JMBAG);
 
         }
 
