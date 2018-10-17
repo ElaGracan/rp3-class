@@ -19,7 +19,22 @@ namespace vjezbe
 
         static void vjezbe3()
         {
+            Pravokutnik p = new Pravokutnik(3, 4);
+            PravokutniTrokut pt = new PravokutniTrokut(3, 4);
+            Krug k = new Krug(1);
+            Romb r = new Romb(2, 1);
 
+            k.IspisImena();
+            Console.WriteLine("opseg = {0}, povrsina = {1}", k.Opseg(), k.Povrsina());
+
+            p.IspisImena();
+            Console.WriteLine("opseg = {0}, povrsina = {1}", p.Opseg(), p.Povrsina());
+
+            pt.IspisImena();
+            Console.WriteLine("opseg = {0}, povrsina = {1}", pt.Opseg(), pt.Povrsina());
+
+            r.IspisImena();
+            Console.WriteLine("opseg = {0}, povrsina = {1}", r.Opseg(), r.Povrsina());
         }
 
         static void vjezbe2()

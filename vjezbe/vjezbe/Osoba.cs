@@ -42,7 +42,7 @@ namespace vjezbe
 
         public virtual void Ispisi()
         {
-            Console.WriteLine("Ime: {0}, Prezime: {1}", Ime, Prezime)
+            Console.WriteLine("Ime: {0}, Prezime: {1}", Ime, Prezime);
         }
     }
 }
