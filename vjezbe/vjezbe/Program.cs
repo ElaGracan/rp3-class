@@ -11,11 +11,24 @@ namespace vjezbe
         static void Main(string[] args)
         {
             //vjezbe1();
-            vjezbe2();
+            //vjezbe2();
             //vjezbe3();
+            Vjezbe4();
+            Vjezbe5();
         }
 
-        static void vjezbe3()
+        static void Vjezbe5()
+        {
+
+        }
+
+        static void Vjezbe4()
+        {
+            Matrica m = new Matrica(2, 3);
+            m[]
+            m.Ispisi();
+        }
+        static void Vjezbe3()
         {
             Pravokutnik p = new Pravokutnik(3, 4);
             PravokutniTrokut pt = new PravokutniTrokut(3, 4);
@@ -35,7 +48,7 @@ namespace vjezbe
             Console.WriteLine("opseg = {0}, povrsina = {1}", r.Opseg(), r.Povrsina());
         }
 
-        static void vjezbe2()
+        static void Vjezbe2()
         {
             Osoba o = new Student();
             o.Ime = "Marko";
@@ -59,7 +72,7 @@ namespace vjezbe
             a /= b;
             Console.WriteLine(a);
         }
-        static void vjezbe1()
+        static void Vjezbe1()
         {
             //Console.WriteLine("hello");
             NajmanjiProstVeci(12);
