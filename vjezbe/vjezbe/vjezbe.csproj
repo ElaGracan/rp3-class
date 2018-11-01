@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
     <Compile Include="brojN.cs" />
+    <Compile Include="D.cs" />
     <Compile Include="Krug.cs" />
     <Compile Include="Lik.cs" />
     <Compile Include="Matrica.cs" />

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace vjezbe
 {
@@ -10,22 +8,48 @@ namespace vjezbe
     {
         static void Main(string[] args)
         {
-            //vjezbe1();
-            //vjezbe2();
-            //vjezbe3();
-            Vjezbe4();
+            //Vjezbe1();
+            //Vjezbe2();
+            //Vjezbe3();
+            //Vjezbe4();
             Vjezbe5();
         }
 
         static void Vjezbe5()
         {
+           /* Thread[] threads = new Thread[10];
+            Account acc = new Account(1000); // zajednicki objekt za threadove
+            for (int i = 0; i < 10; i++)
+                threads[i] = new Thread(new ThreadStart(acc.DoTransactions));
+            for (int i = 0; i < 10; i++) threads[i].Start();
+            for (int i = 0; i < 10; ++i) threads[i].Join();
+            Console.ReadKey();*/
 
+
+            Thread[] threads = new Thread[10];
+            Account acc = new Account(); // acc će biti zajednički objekt
+            for (int i = 0; i < 2; i++)
+            {
+                Thread t = new Thread(new ThreadStart(acc.Radi));
+                t.Name = i.ToString();
+                threads[i] = t;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                threads[i].Start();
+            }
+            Console.WriteLine("threadovi zapoceli");
+            acc.a.Set();
+            Thread.Sleep(100);
+            acc.a.Set();
+            acc.a.Reset();
         }
+    
 
         static void Vjezbe4()
         {
             Matrica m = new Matrica(2, 3);
-            m[]
+           // m[]
             m.Ispisi();
         }
         static void Vjezbe3()
