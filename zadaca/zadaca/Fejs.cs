@@ -17,6 +17,7 @@ namespace zadaca
         public Fejs(string ime)
         {
             this.ime = ime;
+            osobe = new List<Osoba>();
         }
 
         //Osobe dodajemo funkcijom dodaj koja kao parametar prima ime i prezime osobe.
@@ -24,9 +25,7 @@ namespace zadaca
         {
             Console.WriteLine(this.ToString());
             Osoba o = Osoba.kreiraj(ime, prezime, this);
-            if (osobe == null)
-                osobe = new List<Osoba>();
-            
+                  
             osobe.Add(o);
         
             return o;
@@ -57,6 +56,13 @@ namespace zadaca
         public override string ToString()
         {
             return ime;
+        }
+
+        public void popisLjudi()
+        {
+            Console.WriteLine("Osobe na fejsu {0}", this.ToString());
+            foreach (Osoba o in osobe)
+                Console.WriteLine("{0}\n", o.ToString());
         }
 
         

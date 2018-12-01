@@ -33,12 +33,17 @@ namespace zadaca
             Fejs f1 = new Fejs("prvi fejs");
             Fejs f2 = new Fejs("drugi fejs");
 
-            Console.WriteLine(f1.ToString());
+            
             Osoba o11 = f1.dodaj("Ela", "Gracan");
-            Osoba o12 = Osoba.kreiraj("Petar", "Talijic", f1);
+            Osoba o12 = f1.dodaj("Petar", "Talijic");
 
-            //o11 += o12;
-            o12.ispisi();
+            o11 += o12;
+            o11.ispisi();
+
+            o11 -= o12;
+            o11.ispisi();
+
+            f1.popisLjudi();
         }
     }
 }
