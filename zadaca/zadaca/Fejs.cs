@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace zadaca
 {
-    class Fejs
+    class Fejs:IEnumerable<Osoba>, IComparer<Osoba>, IComparable<Fejs>
     {
         List<Osoba> osobe;
         string ime;
@@ -20,10 +20,47 @@ namespace zadaca
             osobe = new List<Osoba>();
         }
 
+        // Napravite operator indeksiranja
+        public SortedDictionary<string, Osoba> this[string prezime]
+        {
+            get
+            {
+                SortedDictionary<string, Osoba> l = new SortedDictionary<string, Osoba>();
+                foreach (Osoba o in osobe)
+                    if (o.prezime == prezime)
+                        l.Add(o.ime, o);
+                return l;
+            }
+
+            set
+            {
+
+            }
+        }
+
+
+        //te omogućite da je klasu moguće koristiti u foreach iskazima
+        public IEnumerator<Osoba> GetEnumerator()
+        {
+            foreach(Osoba o in this.osobe)
+            {
+                yield return o;
+            }
+        }
+        
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+       
+
+
+
         //Osobe dodajemo funkcijom dodaj koja kao parametar prima ime i prezime osobe.
         internal Osoba dodaj(string ime, string prezime)
         {
-            Console.WriteLine(this.ToString());
+            
             Osoba o = Osoba.kreiraj(ime, prezime, this);
                   
             osobe.Add(o);
@@ -32,9 +69,9 @@ namespace zadaca
         }
 
         //Napišite i funkciju izbaci kojom izbacujemo određenu osobu s fejsa.
-        public void izbaci(Osoba o)//(string ime, string prezime)
+        internal void izbaci(Osoba o)//(string ime, string prezime)
         {
-            osobe.Remove(o);// (osobe.Single(r => r.ime == ime && r.prezime == prezime));
+            osobe.Remove(o);
             foreach (Osoba ooo in osobe)
                 ooo.listaprijatelji.Remove(o);
         }
@@ -65,6 +102,30 @@ namespace zadaca
                 Console.WriteLine("{0}\n", o.ToString());
         }
 
-        
+        public int Compare(Osoba x, Osoba y)
+        {
+            return x.CompareTo(y);
+        }
+
+        public void Sort()
+        {
+            osobe.Sort();
+        }
+
+        public int CompareTo(Fejs other)
+        {
+            return ime.CompareTo(other.ime);
+        }
+
+        public bool Equals(Fejs other)
+        {
+            if (other == null) return false;
+            return ime.Equals(other.ime);
+        }
+
+        public override int GetHashCode()
+        {
+            return ime.GetHashCode();
+        }
     }
 }

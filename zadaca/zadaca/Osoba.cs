@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace zadaca
 {
-    class Osoba
+    class Osoba:IComparable<Osoba>
     {
         internal string ime;
-        internal string prezime;
+        public string prezime;
         internal Fejs f;
         internal List<Osoba> listaprijatelji;
         internal bool flag;
@@ -52,13 +52,17 @@ namespace zadaca
        
         public static Osoba operator +(Osoba a, Osoba b)
         {
-            a.provjera();
-            b.provjera();
-            a.listaprijatelji.Add(b);
+            if (a.f.Equals(b.f))
+            {
+                a.provjera();
+                b.provjera();
+                a.listaprijatelji.Add(b);
 
-           
-            b.listaprijatelji.Add(a);
-            return a;
+
+                b.listaprijatelji.Add(a);
+                return a;
+            }
+            else throw new InvalidOperationException("Osobe " + a.ToString() + " i " +b.ToString() + " nisu na istom fejsu");
         }
 
         //Napišite i operatore += pomoću kojeg sprijateljimo dvije osobe, te -= s kojim ih posvađamo.
@@ -67,17 +71,16 @@ namespace zadaca
             a.provjera();
             b.provjera();
             a.listaprijatelji.Remove(b);
+            b.listaprijatelji.Remove(a);
             if (a.listaprijatelji.Count == 0)
             {
                 a.f.izbaci(a);
                 a.flag = true;
             }
-                
 
-            b.listaprijatelji.Remove(a);
             if (b.listaprijatelji.Count == 0)
             {
-                b.f.izbaci(a);
+                b.f.izbaci(b);
                 b.flag = true;
             }
                 
@@ -87,25 +90,55 @@ namespace zadaca
         public override string ToString()
         {
             provjera();
-            return "fejs: " + f.ToString() + "\nime: " + ime + "\nprezime: " + prezime + "\nbrojPrijatelja: " + brojPrijatelja().ToString(); 
+            return ime + " " + prezime + ", broj prijatelja: " + brojPrijatelja().ToString(); 
         }
 
         public void ispisi()
         {
             provjera();
             Console.WriteLine(this.ToString());
-            Console.WriteLine("****************************");
-            Console.WriteLine("Lista prijatelja:\n");
-            if(listaprijatelji != null)
-                foreach (Osoba o in listaprijatelji)
+
+
+            if (listaprijatelji != null)
+            {
+                Console.WriteLine("****************************");
+                Console.WriteLine("Lista prijatelja:\n");
+                foreach(Osoba o in listaprijatelji)
                     Console.WriteLine("{0}\n", o.ToString());
-            Console.WriteLine("****************************");
+                Console.WriteLine("****************************");
+            }
         }
 
+        //Ukoliko koristimo izbačenu osobu, treba generirati iznimku.
         void provjera()
         {
             if(this.flag)
-                throw new InvalidOperationException("osoba izbacena s fejsa");
+               throw new InvalidOperationException("Osobu nije moguće koristiti jer je izbacena s fejsa");
         }
+
+       // te u sortiranju(sortirati osobe po broju prijatleja, pa po prezimenu, pa po imenu).
+
+        public int CompareTo(Osoba o)
+        {
+            int rez = this.brojPrijatelja().CompareTo(o.brojPrijatelja());
+            if (rez == 0)
+                rez = this.prezime.CompareTo(o.prezime);
+            if (rez == 0)
+                rez = this.ime.CompareTo(o.ime);
+            return rez;
+        }
+
+        public bool Equals(Osoba other)
+        {
+            if (other == null) return false;
+            return (ime.Equals(other.ime) && prezime.Equals(other.prezime));
+        }
+
+        public override int GetHashCode()
+        {
+            return ime.GetHashCode() + prezime.GetHashCode();
+        }
+
+        
     }
 }
