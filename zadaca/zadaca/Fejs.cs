@@ -127,5 +127,29 @@ namespace zadaca
         {
             return ime.GetHashCode();
         }
+
+        public void funkcija_fejs()
+        {
+            
+            foreach (Osoba o in osobe)
+            {
+                int i = 0;
+                int j = 0;
+                foreach (Osoba p in o.prijatelji())
+                {
+                    //Console.WriteLine("{0} {1}", i, j);
+                    i += p.ime.Length;
+                    j += p.prezime.Length;
+                }
+                if (i > j)
+                    Console.WriteLine(o.ToString());
+
+
+
+            }
+
+
+                    
+        }
     }
 }

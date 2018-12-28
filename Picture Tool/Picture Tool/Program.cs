@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TestApplication
+namespace Pictute_Tool
 {
     static class Program
     {
@@ -14,17 +14,9 @@ namespace TestApplication
         [STAThread]
         static void Main()
         {
-            MainForm mf = new MainForm();
-            MainForm tf = new MainForm();
-            tf.ShowDialog();
-
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            
-            Application.Run(mf);
-
+            Application.Run(new Form1());
         }
     }
 }

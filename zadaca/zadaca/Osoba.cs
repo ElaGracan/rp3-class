@@ -21,7 +21,7 @@ namespace zadaca
             this.ime = ime;
             this.prezime = prezime;
             listaprijatelji = new List<Osoba>();
-            f = new Fejs("");
+            
             flag = false;
                    
         }
@@ -56,10 +56,14 @@ namespace zadaca
             {
                 a.provjera();
                 b.provjera();
-                a.listaprijatelji.Add(b);
+                if (!a.listaprijatelji.Contains(b) && !b.listaprijatelji.Contains(a))
+                {
+                    a.listaprijatelji.Add(b);
 
 
-                b.listaprijatelji.Add(a);
+                    b.listaprijatelji.Add(a);
+                }
+                else throw new InvalidOperationException("Osobe nije moguce ponovno spijateljiti, vec su prijatelji");
                 return a;
             }
             else throw new InvalidOperationException("Osobe " + a.ToString() + " i " +b.ToString() + " nisu na istom fejsu");
@@ -70,20 +74,26 @@ namespace zadaca
         {
             a.provjera();
             b.provjera();
-            a.listaprijatelji.Remove(b);
-            b.listaprijatelji.Remove(a);
-            if (a.listaprijatelji.Count == 0)
-            {
-                a.f.izbaci(a);
-                a.flag = true;
-            }
 
-            if (b.listaprijatelji.Count == 0)
+            if (a.listaprijatelji.Contains(b) && b.listaprijatelji.Contains(a))
             {
-                b.f.izbaci(b);
-                b.flag = true;
+                a.listaprijatelji.Remove(b);
+                b.listaprijatelji.Remove(a);
+                if (a.listaprijatelji.Count == 0)
+                {
+                    a.f.izbaci(a);
+                    a.flag = true;
+                }
+                if (b.listaprijatelji.Count == 0)
+                {
+                    b.f.izbaci(b);
+                    b.flag = true;
+                }
             }
-                
+            else
+                throw new InvalidOperationException("Osobe nisu prijatelji, nije ih moguce posvadati");
+
+           
             return a;
         }
 
@@ -138,6 +148,8 @@ namespace zadaca
         {
             return ime.GetHashCode() + prezime.GetHashCode();
         }
+
+        
 
         
     }

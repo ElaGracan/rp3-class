@@ -28,7 +28,7 @@ namespace zadaca
             Osoba o14 = f1.dodaj("Iva", "Talijic");
             Osoba o15 = f1.dodaj("Vido", "Talijic");
             Osoba o16 = f1.dodaj("Marijana", "Talijic");
-            Osoba o17 = f1.dodaj("Tomo", "Gracan");
+            Osoba o17 = f1.dodaj("Tomislav", "Gracan");
             Osoba o18 = f1.dodaj("Ena", "Gutic");
             Osoba o19 = f1.dodaj("Dino", "Komadina");
             Osoba o10 = f1.dodaj("Dora", "Segovic");
@@ -40,6 +40,9 @@ namespace zadaca
             o13 += o15;
             o13 += o16;
             o18 += o19;
+
+            o17 += o16;
+            o10 += o17;
             o11.ispisi();
 
             try
@@ -94,6 +97,27 @@ namespace zadaca
             }
 
             Console.WriteLine("****************************");
+
+            try
+            {
+                o13 += o15;
+            }
+            catch (InvalidOperationException e) { Console.WriteLine(e.Message); }
+
+            try
+            {
+                o13 -= o10;
+            }
+            catch (InvalidOperationException e) { Console.WriteLine(e.Message); }
+
+            Osoba o1 = f1.dodaj("Marijana", "Talijic");
+            Osoba o2 = f1.dodaj("Tomislav", "Gracan");
+
+            //o1 += o2;
+            Console.WriteLine("****************************\n");
+            f1.funkcija_fejs();
+            
+                
         }
 
     }

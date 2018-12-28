@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TestApplication
+namespace WindowsFormsApp1
 {
     static class Program
     {
@@ -14,17 +14,19 @@ namespace TestApplication
         [STAThread]
         static void Main()
         {
-            MainForm mf = new MainForm();
-            MainForm tf = new MainForm();
-            tf.ShowDialog();
 
+            Form form1 = new Form();
+            Form form2 = new Form();
+            Form form3 = new Form();
 
+            form1.Text = "1.forma - Run";
+          form2.Text = "2.forma - Show";
+          form2.Show();
+            form3.Text ="3.forma - ShowDialog";
+          form3.ShowDialog();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            
-            Application.Run(mf);
-
+            Application.Run(form1);
         }
     }
 }
