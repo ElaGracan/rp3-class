@@ -17,6 +17,26 @@ namespace Pictute_Tool
         public Form1()
         {
             InitializeComponent();
+
+            Object[] fonts = new Object[System.Drawing.FontFamily.Families.Length];
+            int i = 0;
+            foreach (FontFamily font in System.Drawing.FontFamily.Families)
+            {
+                fonts[i] = font.Name;
+                i++;
+            }
+
+            toolStripComboBox1.Items.AddRange(fonts);
+
+            Object[] fontsize = new Object[System.Drawing.FontFamily.Families.Length];
+            for (int j=0; j<10;j++)
+            {
+                fontsize[j] = 2 * j + 8;
+               
+            }
+            toolStripComboBox2.Items.AddRange(fontsize);
+
+
         }
 
                 
@@ -156,6 +176,11 @@ namespace Pictute_Tool
             
         }
 
-        
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            //promijeniti kursor u olovcicu
+            PictureBox bm = (PictureBox)tabControl1.SelectedTab.Controls[0];
+            //omiguciti da se pojavi dodatan toolbox za crtanje - boje, debljina linije...pogledati sto jos
+        }
     }
 }

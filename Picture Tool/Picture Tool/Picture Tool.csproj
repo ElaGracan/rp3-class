@@ -122,5 +122,8 @@
   <ItemGroup>
     <None Include="Resources\TransformShape_16x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextElement_16x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
