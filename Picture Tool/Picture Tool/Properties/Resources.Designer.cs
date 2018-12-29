@@ -153,6 +153,16 @@ namespace Pictute_Tool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TextElement_16x {
+            get {
+                object obj = ResourceManager.GetObject("TextElement_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TransformShape_16x {
             get {
                 object obj = ResourceManager.GetObject("TransformShape_16x", resourceCulture);
