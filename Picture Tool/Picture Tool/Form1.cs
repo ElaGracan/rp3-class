@@ -220,20 +220,21 @@ namespace Pictute_Tool
             p1.X = me.X;
             p1.Y = me.Y;
             crtam = true;
+            Graphics g = this.tabControl1.SelectedTab.Controls[0].CreateGraphics();
             switch (izabraniLik)
             {
                 case Lik.Line:
                     this.tabControl1.SelectedTab.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
                     break;
                 case Lik.Brush:
-                    
+                    g.FillEllipse(new SolidBrush(pen1.Color), me.X, me.Y, Convert.ToInt32(this.toolStripComboBox3.Text), Convert.ToInt32(this.toolStripComboBox3.Text));
                     break;
                 case Lik.FreeLine:
                     //g = this.tabControl1.SelectedTab.CreateGraphics();
                     break;
 
             }
-            
+            g.Dispose();
 
             //this.tabControl1.SelectedTab.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             
