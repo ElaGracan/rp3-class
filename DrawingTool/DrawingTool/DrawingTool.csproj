@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D89CF6EE-7DEB-4935-8F28-898697D16B86}</ProjectGuid>
+    <ProjectGuid>{247B899E-9856-4E0F-979C-57F436814DCC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Pictute_Tool</RootNamespace>
-    <AssemblyName>Pictute Tool</AssemblyName>
+    <RootNamespace>DrawingTool</RootNamespace>
+    <AssemblyName>DrawingTool</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,39 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrushCommand.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ICommand.cs" />
+    <Compile Include="Polyline.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UndoRedo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Shape.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,40 +83,109 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\icons8-circled-thin-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\2667_54705917966_627192966_1575495_7508470_n.jpg" />
+    <None Include="Resources\icons8-rectangular-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Save_16x.png" />
+    <None Include="Resources\icons8-add-file-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SaveAs_16x.png" />
+    <None Include="Resources\icons8-opened-folder-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Pen2_16x.png" />
+    <None Include="Resources\icons8-save-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NewFile_16x.png" />
+    <None Include="Resources\icons8-save-as-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\OpenFile_16x.png" />
+    <None Include="Resources\icons8-close-window-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Close_red_16x.png" />
+    <None Include="Resources\icons8-save-all-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Rectangle_16x.png" />
+    <None Include="Resources\icons8-undo-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Ellipse_16x.png" />
+    <None Include="Resources\icons8-redo-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TransformShape_16x.png" />
+    <None Include="Resources\icons8-design-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TextElement_16x.png" />
+    <None Include="Resources\icons8-pencil-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-erase-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-paint-bucket-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-no-paint-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-text-color-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-crayon-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cursor-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-maximize-window-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-paint-palette-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-collage-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-crayon-161.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-create-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-image-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-file-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-line-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-minimize-window-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-new-resume-template-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-oval-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-paint-net-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-restore-window-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-minimize-window-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-maximize-window-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-window-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-paint-palette-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

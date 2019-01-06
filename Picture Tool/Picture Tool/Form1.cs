@@ -19,6 +19,7 @@ namespace Pictute_Tool
         Graphics g;
         private Bitmap bmp;
         Pen pen1;
+        UndoRedo ur;
         
         Lik izabraniLik;
         bool crtam = false;
@@ -33,6 +34,7 @@ namespace Pictute_Tool
             p1 = new Point();
             p2 = new Point();
             pen1 = new Pen(Color.Black, 3);
+            ur = new UndoRedo();
             InitializeComponent();
 
             
@@ -74,8 +76,8 @@ namespace Pictute_Tool
 
 
             //nova bitmapa na koju cemo crtati
-            bmp = new Bitmap(this.tabPage1.Width, this.tabPage1.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            Graphics.FromImage(bmp).Clear(Color.White);
+            //bmp = new Bitmap(this.tabPage1.Width, this.tabPage1.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            //Graphics.FromImage(bmp).Clear(Color.White);
         }
         
 
@@ -262,7 +264,7 @@ namespace Pictute_Tool
                         }
                         break;
                     case Lik.Brush:
-                        
+                      //  ur.MakeSnapshot((PictureBox)this.tabControl1.SelectedTab.Controls[0]);
                         g.FillEllipse(new SolidBrush(pen1.Color), me.X, me.Y, Convert.ToInt32(this.toolStripComboBox3.Text), Convert.ToInt32(this.toolStripComboBox3.Text));
                                                 
                         break;
@@ -272,6 +274,7 @@ namespace Pictute_Tool
                         p1.X = me.X;
                         p1.Y = me.Y;
                         break;
+
 
                 }
 
@@ -397,6 +400,14 @@ namespace Pictute_Tool
             this.tabControl1.SelectedTab.Controls[0].MouseDown += new System.Windows.Forms.MouseEventHandler(this.Tab_MouseDown);
             this.tabControl1.SelectedTab.Controls[0].MouseUp += new System.Windows.Forms.MouseEventHandler(this.Tab_MouseUp);
             this.tabControl1.SelectedTab.Controls[0].MouseMove += new System.Windows.Forms.MouseEventHandler(this.Tab_MouseMove);
+        }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            PictureBox pb = (PictureBox)this.tabControl1.SelectedTab.Controls();
+            pb = ur.Undo();
+            pb.Refresh();
+            
         }
 
 
